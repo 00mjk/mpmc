@@ -281,6 +281,9 @@ double n2_comp_back(double, double);
 double n2_fugacity_PR(double, double);
 double n2_fugacity_zhou(double, double);
 double co2_fugacity(double, double);
+double phast_q_star(double);
+double phast_star(double);
+double trappe(double);
 
 double get_rand();
 

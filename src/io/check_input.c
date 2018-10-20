@@ -709,6 +709,63 @@ void mc_options(system_t *system) {
                 output(linebuf);
             }
 
+            if (system->phast_q_star_fugacity) {
+                if (system->fugacities != NULL) {
+                    error(
+                        "INPUT: phastq_star_fugacity called, but fugacities are already set.\n");
+                    die(-1);
+                }
+                system->fugacities = malloc(sizeof(double));
+                memnullcheck(system->fugacities, sizeof(double), __LINE__ - 1, __FILE__);
+
+                system->fugacities[0] = phast_q_star(system->pressure);
+                if (system->phast_q_star_fugacity == 0.0) {
+                    error(
+                        "INPUT: error in phastq* fugacity assignment\n");
+                    die(-1);
+                }
+                sprintf(linebuf,
+                        "INPUT: PHASTq* fugacity = %.3f atm\n", system->fugacities[0]);
+                output(linebuf);
+            }
+            if (system->phast_star_fugacity) {
+                if (system->fugacities != NULL) {
+                    error(
+                        "INPUT: phast_star_fugacity called, but fugacities are already set.\n");
+                    die(-1);
+                }
+                system->fugacities = malloc(sizeof(double));
+                memnullcheck(system->fugacities, sizeof(double), __LINE__ - 1, __FILE__);
+
+                system->fugacities[0] = phast_star(system->pressure);
+                if (system->phast_star_fugacity == 0.0) {
+                    error(
+                        "INPUT: error in PHAST* fugacity assignment\n");
+                    die(-1);
+                }
+                sprintf(linebuf,
+                        "INPUT: PHAST* fugacity = %.3f atm\n", system->fugacities[0]);
+                output(linebuf);
+            }
+            if (system->trappe_fugacity) {
+                if (system->fugacities != NULL) {
+                    error(
+                        "INPUT: trappe_fugacity called, but fugacities are already set.\n");
+                    die(-1);
+                }
+                system->fugacities = malloc(sizeof(double));
+                memnullcheck(system->fugacities, sizeof(double), __LINE__ - 1, __FILE__);
+
+                system->fugacities[0] = trappe(system->pressure);
+                if (system->trappe_fugacity == 0.0) {
+                    error(
+                        "INPUT: error in TRAPPe fugacity assignment\n");
+                    die(-1);
+                }
+                sprintf(linebuf,
+                        "INPUT: TRAPPe fugacity = %.3f atm\n", system->fugacities[0]);
+                output(linebuf);
+            }
             if (system->h2_fugacity) {
                 if (system->fugacities != NULL) {
                     error(

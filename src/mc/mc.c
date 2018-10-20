@@ -46,6 +46,8 @@ void boltzmann_factor(system_t *system, double initial_energy, double final_ener
             //obtain the correct fugacity value
             if (system->h2_fugacity || system->co2_fugacity || system->ch4_fugacity || system->n2_fugacity)
                 fugacity = system->fugacities[0];
+            else if (system->trappe_fugacity || system->phast_q_star_fugacity || system->phast_star_fugacity)
+                fugacity = system->fugacities[0];
             else if (system->user_fugacities)
                 fugacity = system->fugacities[system->sorbateInsert];
             else

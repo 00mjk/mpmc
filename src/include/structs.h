@@ -444,6 +444,9 @@ typedef struct _system {
 
     // uvt fugacity functions
     int h2_fugacity, co2_fugacity, ch4_fugacity, n2_fugacity, user_fugacities;
+    int trappe_fugacity, phast_q_star_fugacity, phast_star_fugacity;
+
+
 
     // i/o options
     int wrapall;

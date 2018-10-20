@@ -13,6 +13,33 @@ void string_output(string message) {
     output((char *)message.c_str());
 }
 
+//custom fugacity functions for fugacity paper
+//experimental data
+double phast_q_star(double pressure)
+{
+  double square= 8.2e-05 * pressure * pressure;
+  double linear= 0.003089 * pressure;
+  double constant = 1.005018;
+  return(pressure * (square + linear + constant));
+}
+double phast_star(double pressure)
+{
+  double square= 8.6e-05 * pressure * pressure;
+  double linear= .000735 * pressure;
+  double constant = 1.012135;
+  return(pressure * (square + linear + constant));
+}
+double trappe(double pressure)
+{
+  double square= .000129 * pressure * pressure;
+  double linear= .002365 * pressure;
+  double constant = 1.010909;
+  cout << "******************************************" << endl;
+  cout << (pressure * (square + linear + constant)) << endl;
+  cout << "******************************************" << endl;
+  return(pressure * (square + linear + constant));
+}
+
 /************************************
  * BEGIN PENG-ROBINSON
  ************************************/

@@ -714,6 +714,39 @@ int do_command(system_t *system, char **token) {
 
     /* fugacity shits */
     else if (!strcasecmp(token[0],
+                         "trappe_fugacity")) {
+        if (!strcasecmp(token[1],
+                        "on"))
+            system->trappe_fugacity = 1;
+        else if (!strcasecmp(token[1],
+                             "off"))
+            system->trappe_fugacity = 0;
+        else
+            return 1;
+    }
+    else if (!strcasecmp(token[0],
+                         "phast_q_star_fugacity")) {
+        if (!strcasecmp(token[1],
+                        "on"))
+            system->phast_q_star_fugacity = 1;
+        else if (!strcasecmp(token[1],
+                             "off"))
+            system->phast_q_star_fugacity = 0;
+        else
+            return 1;
+    }
+    else if (!strcasecmp(token[0],
+                         "phast_star_fugacity")) {
+        if (!strcasecmp(token[1],
+                        "on"))
+            system->phast_star_fugacity = 1;
+        else if (!strcasecmp(token[1],
+                             "off"))
+            system->phast_star_fugacity = 0;
+        else
+            return 1;
+    }
+    else if (!strcasecmp(token[0],
                          "h2_fugacity")) {
         if (!strcasecmp(token[1],
                         "on"))
@@ -723,7 +756,8 @@ int do_command(system_t *system, char **token) {
             system->h2_fugacity = 0;
         else
             return 1;
-    } else if (!strcasecmp(token[0],
+    }
+    else if (!strcasecmp(token[0],
                            "co2_fugacity")) {
         if (!strcasecmp(token[1],
                         "on"))
